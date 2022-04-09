@@ -1,0 +1,58 @@
+# ---------network parameter---------------
+
+data_path = "/dataset/"
+dataset = "cifar100" # options: imagenet | cifar10 | cifar100
+nGPU = 1
+GPU = [0, 1]
+visible_devices = "1"
+
+# ----------- Data options -------------------
+worker = 8 # number of data loader 
+
+
+# ----------- Model Option -------------------
+model_name = "resnet_cifar"
+depth=20
+save_path = "/data/adabits/save_log/"${dataset}_${model_name}
+
+# ----------- Train options ------------------
+seed = 2
+train = True
+epochs = 200
+batch_size = 256
+
+# ----------- optimizer option ----------------
+
+weight_decay = 0.00004
+optimizer = "SGD"
+warmup = 5
+lr = 0.1
+momentum = 0.9
+nesterov = True
+
+# ----------- scheduler option ------------------
+ 
+scheduler = "multi_step"
+ml_step = [100, 150]
+lr_gamma = 0.1
+
+# -------- log option --------------------
+log_override = True
+
+
+# -------- adabits option ----------------
+stats_sharing = False
+clamp = True
+rescale = True
+rescale_conv = True
+switchbn = True
+bn_calib=False
+rescale_type=constant
+switch_alpha=True
+
+weight_quant_scheme=modified
+act_quant_scheme=original
+
+adaptive_training=True
+bits_list=[8, 6, 4]
+weight_only=False
